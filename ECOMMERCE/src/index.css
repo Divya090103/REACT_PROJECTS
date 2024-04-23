@@ -1,0 +1,39 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+:root{
+ --clr: rgb(4, 131, 185);
+}
+.topbar{
+  width: 100%;
+  height: auto;
+  /* padding: 0.3%; */
+  background-color:black;
+}
+.list{
+  text-align: center;
+  border-right: 1px solid grey;
+}
+.list button{
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.list a{
+  text-decoration: none;
+  color: white;
+}
+.list{
+  list-style: none;
+}
+.list a i{
+  text-decoration: none;
+  color: rgb(4, 131, 185);
+  font-size: 15px;
+}
+.list button i{
+  color: rgb(4, 131, 185);
+  font-size: 15px;
+}

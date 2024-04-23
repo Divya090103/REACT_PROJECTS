@@ -1,0 +1,21 @@
+.area{
+  width:500px;
+  border: 2px solid rgb(183, 182, 182);
+  text-align: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgb(103, 103, 3);
+}
+.inp{
+  width: 410px;
+  height: 10vh;
+  font-size: 35px;
+  color: black;
+  border-radius: 10px;
+}
+.btns{
+width: 100px;
+height: auto;
+border-radius: 10px;
+  font-size: 30px;
+}
