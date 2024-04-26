@@ -1,0 +1,7 @@
+.contain{
+  border: 2px solid black;
+  padding: auto;
+  text-align: center;
+  line-height: 1.5;
+  line-break:inherit;
+}
