@@ -11,3 +11,8 @@
 .content{
   width: 100%;
 }
+.frm{
+  border: 2px solid plum;
+  padding: 2%;
+  margin-top: 3%;
+}
