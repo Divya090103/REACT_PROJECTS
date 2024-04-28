@@ -1,0 +1,13 @@
+.app-container{
+  display: flex;
+}
+.side{
+  min-height:695px;
+}
+.side ul li a:hover{
+  background-color: rgb(68, 68, 225);
+  color:#fff !important;
+}
+.content{
+  width: 100%;
+}
