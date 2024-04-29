@@ -3,6 +3,7 @@ import { createContext, useContext,useReducer } from "react";
 export const Postlist=createContext({
   postlist:[],
   add:()=>{},
+  Intailpost:()=>{},
   delte:()=>{}
 });
 const postlistreducer=(currentpost,action)=>{
@@ -10,14 +11,17 @@ const postlistreducer=(currentpost,action)=>{
   if(action.type==='Delete'){
   newlist=currentpost.filter((postlist)=>postlist.id!=action.payload.postid);
   }
-  if(action.type==="Add"){
+ else if(action.type==="Add"){
     action.payload.id=Math.random();
     newlist=[action.payload,...currentpost];
+  }
+  else if(action.type==="Initial"){
+    newlist=action.payload.posts;
   }
   return newlist;
 }
  const Postlistprovider=({children})=>{
-  const [postlist,dispatchList]=useReducer(postlistreducer,DEFAULT_POST_LIST);
+  const [postlist,dispatchList]=useReducer(postlistreducer,[]);
   const add=(id,title,cnt,tags,like,dislike)=>{
     console.log(`${id},${title} ${cnt} ${tags} ${like} ${dislike}`);
     dispatchList(
@@ -43,28 +47,19 @@ const postlistreducer=(currentpost,action)=>{
    });
 
   }
+  const Intailpost=(posts)=>{
+    dispatchList(
+      {type:"Initial",
+      payload:{posts}
+    });
+
+  }
 
   return(
-    <Postlist.Provider value={{postlist,add,deltepost}}>
+    <Postlist.Provider value={{postlist,add,Intailpost,deltepost}}>
       {children}
     </Postlist.Provider>
   )
  }
- const DEFAULT_POST_LIST=[{
-  id:'1',
-  userid:'anish@345',
-  reaction:2,
-  title:'Going to Mumbai',
-  body:'H1 Freinds! I am going on a vacation',
-  tags:['#vacation','#Mumbai','#Enjoying'],
-  disreaction:4
- },
- {id:'2',
- userid:'nisha@35',
- reaction:15,
- title:'FINALLY PASS',
- body:'H1 Freinds! I am going on a vacation',
- tags:['#Graduating','#Unbelivable'],
- disreaction:0
-}];
+
  export default Postlistprovider;

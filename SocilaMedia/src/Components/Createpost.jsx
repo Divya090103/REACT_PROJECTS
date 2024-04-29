@@ -11,7 +11,12 @@ const handlesubmit=()=>{
   const title=posttitle.current.value
   const cnt=content.current.value
   const tags=posttag.current.value.split(/(\s+)/);
+  userid.current.value="";
+  posttitle.current.value="";
+  content.current.value="";
+
   add(id,title,cnt,tags,0,0)
+
 
 }
 return(
