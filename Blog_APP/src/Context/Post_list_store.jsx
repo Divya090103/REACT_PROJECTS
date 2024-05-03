@@ -12,7 +12,6 @@ const postlistreducer=(currentpost,action)=>{
   newlist=currentpost.filter((postlist)=>postlist.id!=action.payload.postid);
   }
  else if(action.type==="Add"){
-    action.payload.id=Math.random();
     newlist=[action.payload,...currentpost];
   }
   else if(action.type==="Initial"){
@@ -22,18 +21,11 @@ const postlistreducer=(currentpost,action)=>{
 }
  const Postlistprovider=({children})=>{
   const [postlist,dispatchList]=useReducer(postlistreducer,[]);
-  const add=(id,title,cnt,tags,like,dislike)=>{
-    console.log(`${id},${title} ${cnt} ${tags} ${like} ${dislike}`);
+  const add=(post)=>{
     dispatchList(
       {
         type:'Add',
-        payload:{
-           userid:id,
-           title:title,
-           body:cnt,
-           tags:tags,
-          reaction:like,
-           disreaction:dislike}
+        payload:(post)
       }
     );
 

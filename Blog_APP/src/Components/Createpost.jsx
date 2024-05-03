@@ -2,29 +2,40 @@ import { useContext, useRef } from "react";
 import { Postlist } from "../Context/Post_list_store";
 const Createpost=()=>{
   const {add}=useContext(Postlist);
-const userid=useRef();
+const id=useRef();
 const posttitle=useRef();
 const content=useRef();
 const posttag=useRef();
 const handlesubmit=()=>{
-  const id=userid.current.value;
+  const id=id.current.value;
   const title=posttitle.current.value
   const cnt=content.current.value
   const tags=posttag.current.value.split(/(\s+)/);
-  userid.current.value="";
-  posttitle.current.value="";
-  content.current.value="";
+  // userid.current.value="";
+  // posttitle.current.value="";
+  // content.current.value="";
 
-  add(id,title,cnt,tags,0,0)
-
-
+  fetch('https://dummyjson.com/posts/add', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      userid:id,
+      title:title,
+      body:cnt,
+      tags:tags,
+      /* other post data */
+    })
+  })
+  .then(res => res.json())
+  .then(post=>{consolelog("server creste the post")
+    add(post)});
 }
 return(
 
   <form className="frm" onSubmit={handlesubmit}>
   <div className="mb-3">
     <label htmlFor="Userid" className="form-label" >Userid</label>
-    <input type="text" className="form-control" id="Userid" ref={userid} aria-describedby="emailHelp"/>
+    <input type="text" className="form-control" id="Userid" ref={id} aria-describedby="emailHelp"/>
   </div>
   <div className="mb-3">
   <label htmlFor="ttle" className="form-label">Title</label>
